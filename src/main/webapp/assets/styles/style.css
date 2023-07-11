@@ -60,8 +60,10 @@ main .hero {
     height: 600px;
   }
 }
+.hero-img {
+  filter: brightness(50%);
+}
 main .hero .hero-info {
-  background-color: rgba(0, 0, 0, 0.6);
   right: 2%;
 }
 main .card {

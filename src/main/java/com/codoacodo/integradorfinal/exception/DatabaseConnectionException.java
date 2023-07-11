@@ -1,11 +1,12 @@
 package com.codoacodo.integradorfinal.exception;
 
 
-
 /**
  * @author Facundo
  */
-public class DatabaseConnectionException extends Exception {
+public class DatabaseConnectionException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
 
     public DatabaseConnectionException(String message) {
         super(message);

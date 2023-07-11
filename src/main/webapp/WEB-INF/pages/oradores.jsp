@@ -9,70 +9,67 @@
 
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="es">
 
-        <!-- Css reset -->
-        <link  rel="stylesheet" href="${pageContext.request.contextPath}/assets/styles/reset.css" />
+    <!-- Head -->
+    <jsp:include page="../shared/head.jsp">
+        <jsp:param name="titulo" value="Lista de oradores - Trabajo integrador Codo a Codo" ></jsp:param>
+    </jsp:include>
 
-        <!-- Bootstrap -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-            crossorigin="anonymous" />
-
-        <!-- Css propio -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/styles/style.css" />
-        
-        <!-- Bootstrap icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-        <title>Lista de oradores - Trabajo integrador Codo a Codo</title>
-    </head>
     <body>
-        <%@include file="/WEB-INF/shared/header.jsp" %>
+        <!-- Header -->
+        <jsp:include page="../shared/header.jsp"></jsp:include>
 
         <main class="container">
             <div class="row">
-                <h1 class="text-center my-2">Lista de oradores</h1>
+                <c:choose>
+                    <c:when test="${cantidadOradores > 0}">
+                        <h1 class="text-center my-2 p-3">Lista de oradores</h1>
 
-                <table class="table table-hover">
-                    <thead>
-                        <tr class="text-center">
-                            <th colspan="2">Nombre</th>
-                            <th colspan="2">Apellido</th>
-                            <th colspan="2">Fecha de alta (año-mes-dia)</th>
-                            <th colspan="2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="${listaOradores}" var="orador">
-                            <tr class="text-center">
-                                <td colspan="2">${orador.nombre}</td>
-                                <td colspan="2">${orador.apellido}</td>
-                                <td colspan="2">${orador.fechaDeAlta}</td>
-                                <td>
-                                    <button class="btn btn-primary">
-                                        <i class="bi bi-pencil-fill"></i>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger">
-                                        <i class="bi bi-x"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th colspan="2">Nombre</th>
+                                    <th colspan="2">Apellido</th>
+                                    <th colspan="2">Fecha de alta (año-mes-dia)</th>
+                                    <th colspan="2"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <c:forEach items="${listaOradores}" var="orador">
+                                    <tr class="text-center">
+                                        <td colspan="2">${orador.nombre}</td>
+                                        <td colspan="2">${orador.apellido}</td>
+                                        <td colspan="2">${orador.fechaDeAlta}</td>
+                                        <td>
+                                            <a href="${pageContext.request.contextPath}/oradores?action=edit&id=${orador.id}" >
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="${pageContext.request.contextPath}/oradores?action=delete&id=${orador.id}" >
+                                                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                    <i class="bi bi-trash3-fill"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:when>
+
+                    <c:otherwise>
+                        <h1 class="text-center my-4 p-2">Oops... Parece que no hay oradores registrados.</h1>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </main>
 
-
-        <%@include file="/WEB-INF/shared/footer.jsp" %>
+        <!-- Footer -->
+        <jsp:include page="../shared/footer.jsp"></jsp:include>
     </body>
 </html>
