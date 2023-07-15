@@ -18,7 +18,11 @@ public class Conexion {
     
     private static BasicDataSource dataSource;
     
-    
+    /**
+     * Devuelve el datasource estatico de la clase.
+     * 
+     * @return DataSource   data source existente, o uno creado si no existia anteriormente.
+     */
     private static DataSource getDataSource(){
         if(Conexion.dataSource == null){
             Conexion.dataSource = new BasicDataSource();
@@ -30,6 +34,12 @@ public class Conexion {
         return Conexion.dataSource;
     }
     
+    /**
+     * Devuelve una conexion del data source.
+     * 
+     * @return Conexion del data source.
+     * @throws SQLException 
+     */
     public static Connection getConnection() throws SQLException {
         return Conexion.getDataSource().getConnection();
     }

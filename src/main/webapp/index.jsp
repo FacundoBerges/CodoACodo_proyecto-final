@@ -17,13 +17,13 @@
                 <!-- hero -->
                 <div class="row">
                     <div class="col-12" id="conferencia">
-                        <div class="card  text-white hero w-100 h-100">
+                        <div class="card  text-white hero w-100 h-100 mb-5 mb-sm-0">
                             <img src="${pageContext.request.contextPath}/assets/img/ba1-min.png" class="card-img h-100 hero-img" alt="imagen buenos aires">
 
                         <div class="card-img-overlay row">
                             <div class="d-none d-md-block col-12 col-md-6"></div>
 
-                            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center  text-end">
+                            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-end text-end">
                                 <h1 class="card-title d-none d-sm-block">Conf Bs As</h1>
 
                                 <p class="card-text">
@@ -303,6 +303,6 @@
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-        <script src="/assets/js/tickets.js"></script>
+        <script src="./assets/js/tickets.js"></script>
     </body>
 </html>
